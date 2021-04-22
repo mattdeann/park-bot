@@ -11,24 +11,20 @@ function mapNames(mapData) {
   return mapData.map(location => location.name)
 }
 
-function returnData() {
-  let result;
+let result;
 
-  if (pathToData === 'airgarage-data.json') {
-    if (command === 'locate') {
-      result = data.filter(location => location.address.state === userInput);
-    }
+if (pathToData === 'airgarage-data.json') {
+  if (command === 'locate') {
+    result = data.filter(location => location.address.state === userInput);
+  }
 
-    if (command === 'find_price_hourly_lte') {
-      result = data.filter(location => location.price_hourly < userInput)
-    }
-    
-    if (command === 'find_price_hourly_gt') {
-      result = data.filter(location => location.price_hourly > userInput)
-    }
+  if (command === 'find_price_hourly_lte') {
+    result = data.filter(location => location.price_hourly < userInput)
   }
   
-  console.log(mapNames(result))
-} 
+  if (command === 'find_price_hourly_gt') {
+    result = data.filter(location => location.price_hourly > userInput)
+  }
+}
 
-returnData();
+console.log(mapNames(result))
