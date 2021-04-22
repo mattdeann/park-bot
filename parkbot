@@ -2,7 +2,10 @@
 const rawData = require("./airgarage-data");
 const data = JSON.parse(rawData);
 
-let args = process.argv.filter((val, index) => index >= 3);
+const args = process.argv.filter((val, index) => index >= 3);
+const pathToData = args[0];
+const command = args[1];
+const userInput = args[2];
 
 function mapNames(mapData) {
   return mapData.map(location => location.name)
@@ -11,17 +14,17 @@ function mapNames(mapData) {
 function returnData() {
   let result;
 
-  if (args[0] === 'airgarage-data.json') {
-    if (args[1] === 'locate') {
-      result = data.filter(location => location.address.state === args[2]);
+  if (pathToData === 'airgarage-data.json') {
+    if (command === 'locate') {
+      result = data.filter(location => location.address.state === userInput);
     }
 
-    if (args[1] === 'find_price_hourly_lte') {
-      result = data.filter(location => location.price_hourly < args[2])
+    if (command === 'find_price_hourly_lte') {
+      result = data.filter(location => location.price_hourly < userInput)
     }
     
-    if (args[1] === 'find_price_hourly_gt') {
-      result = data.filter(location => location.price_hourly > args[2])
+    if (command === 'find_price_hourly_gt') {
+      result = data.filter(location => location.price_hourly > userInput)
     }
   }
   
