@@ -29,7 +29,7 @@ Tempe Beach Park, Safeway, Azusa Ramen
 `./parkbot airgarage-data.json find_price_hourly_lte 200`
 will return a dataset like this:
 
-Church of 8 Wheels, Tempe Beach Park, AirGarage HQ, Safeway, Walgreens, Goldilocks Pizza, The Salon, Archer Salon
+Tempe Beach Park, AirGarage HQ
 
 ### Find price hourly greater than example
 
