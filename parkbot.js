@@ -2,17 +2,8 @@
 const rawData = require("./data");
 const data = JSON.parse(rawData);
 
-let variables = [];
+let args = process.argv.filter((val, index) => index >= 3);
 
-function getArgs() {
-  variables = process.argv.filter((val, index) => index >= 2);
-}
-
-getArgs();
-
-// console.log(variable);
-
-// when the server receives a command, set up cases for each command
 
 function mapNames(mapData) {
   return mapData.map(location => location.name)
@@ -20,17 +11,19 @@ function mapNames(mapData) {
 
 function returnData() {
   let result;
-
-  if (variables[1] === 'locate') {
-    result = data.filter(location => location.address.state === variables[2]);
-  }
-
-  if (variables[1] === 'find_price_hourly_lte') {
-    result = data.filter(location => location.price_hourly < variables[2])
-  }
-
-  if (variables[1] === 'find_price_hourly_gt') {
-    result = data.filter(location => location.price_hourly > variables[2])
+  // args[0] checks for what data file to access, avoids badly formatted commands
+  if (args[0] === 'data.json') {
+    if (args[1] === 'locate') {
+      result = data.filter(location => location.address.state === args[2]);
+    }
+    
+    if (args[1] === 'find_price_hourly_lte') {
+      result = data.filter(location => location.price_hourly < args[2])
+    }
+    
+    if (args[1] === 'find_price_hourly_gt') {
+      result = data.filter(location => location.price_hourly > args[2])
+    }
   }
 
   console.log(mapNames(result))
