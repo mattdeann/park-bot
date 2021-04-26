@@ -1,5 +1,7 @@
 # park-bot
 
+A small exercise demonstrating Node.js scripting
+
 ## Setup Instructions
 
 Clone the repo into the desired directory
